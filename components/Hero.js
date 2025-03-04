@@ -30,9 +30,12 @@ function Hero() {
     });
   });
   return (
-    <section id="home" className="py-20">
+    <section id="home" className="py-20 max-md:py-0">
       <div className="container px-4 mx-auto">
-        <div className="lg:flex justify-between items-center">
+        <div
+          className="lg:flex justify-between items-center
+        max-md:overflow-hidden"
+        >
           {/* 左 */}
           <div className="lg:w-5/12 mb-10 lg:mb-0">
             <span
