@@ -1,6 +1,9 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const heroContent = {
   text: {
@@ -19,6 +22,13 @@ const heroContent = {
 };
 
 function Hero() {
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "slide",
+      once: true,
+    });
+  });
   return (
     <section id="home" className="py-20">
       <div className="container px-4 mx-auto">
@@ -30,16 +40,30 @@ function Hero() {
             font-semibold relative mb-7 before:content-[" "]
             before:absolute before:w-2/3 before:bg-pinkLight
             before:left-0 before:top-0 before:bottom-0 before:z-[-1]'
+              data-aos="fade-up"
+              data-aos-delay="100"
             >
               {heroContent.text.subTitle}
             </span>
-            <h1 className="text-4xl lg:text-5xl font-bold text-heading mb-5">
+            <h1
+              className="text-4xl lg:text-5xl font-bold text-heading mb-5"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               {heroContent.text.title}
             </h1>
-            <p className="leading-relaxed text-body mb-10">
+            <p
+              className="leading-relaxed text-body mb-10"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               {heroContent.text.discription}
             </p>
-            <div className="flex space-x-3">
+            <div
+              className="flex space-x-3"
+              data-aos="fade-up"
+              data-aos-delay="400"
+            >
               <Link href={""} className="btnGreen">
                 資料ダウンロード
               </Link>
