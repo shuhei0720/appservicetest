@@ -3,7 +3,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <p className="bg-red-500">こんにちは</p>
+      <p className="bg-purpleLight">hello</p>
     </>
   );
 }
