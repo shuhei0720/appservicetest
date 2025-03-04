@@ -84,6 +84,7 @@ function Hero() {
                   height={406}
                   alt="img1"
                   className="object-cover h-full w-full rounded-2xl"
+                  data-aos="fade-right"
                 />
               </div>
               <div className="w-4/12 self-end space-y-2">
@@ -95,6 +96,8 @@ function Hero() {
                       height={437}
                       alt="img2"
                       className="object-cover h-full w-full rounded-2xl"
+                      data-aos="fade-down"
+                      data-aos-delay="100"
                     />
                   </div>
                   <div className="bg-purpleLight rounded-2xl rounded-tr-[200px]" />
@@ -106,6 +109,8 @@ function Hero() {
                     height={392}
                     alt="img3"
                     className="object-cover h-full w-full rounded-2xl"
+                    data-aos="fade-left"
+                    data-aos-delay="200"
                   />
                 </div>
               </div>
@@ -122,6 +127,8 @@ function Hero() {
                     height={394}
                     alt="img4"
                     className="object-cover h-full w-full rounded-2xl"
+                    data-aos="fade-up"
+                    data-aos-delay="300"
                   />
                 </div>
               </div>
@@ -132,6 +139,8 @@ function Hero() {
                   height={495}
                   alt="img5"
                   className="object-cover h-full w-full rounded-2xl"
+                  data-aos="fade-up"
+                  data-aos-delay="400"
                 />
               </div>
             </div>
