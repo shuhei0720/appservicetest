@@ -30,9 +30,9 @@ function Navigation() {
   return (
     <>
       {/* WEBメニュー */}
-      <header>
-        <div>
-          <div>
+      <header className="py-7">
+        <div className="container px-4 mx-auto">
+          <div className="flex justify-between items-center">
             {/* ロゴ */}
             <div>
               <Link href={"/"}>
@@ -45,10 +45,10 @@ function Navigation() {
               </Link>
             </div>
             {/* メニュー */}
-            <div>
-              <ul>
+            <div className="hidden lg:block text-center">
+              <ul className="flex space-x-7">
                 {navigationMenu.map((item, index) => (
-                  <li key={index}>
+                  <li key={index} className="text-body">
                     <Link href={item.href}>{item.label}</Link>
                   </li>
                 ))}
@@ -56,11 +56,13 @@ function Navigation() {
             </div>
             {/* ボタン */}
             <div>
-              <Link href={""}>申し込み</Link>
+              <Link href={"#"} className="btnBlue inline-flex lg:inline-block">
+                申し込み
+              </Link>
 
               {/* モバイル用 */}
-              <button>
-                <HiOutlineBars3 />
+              <button className="block lg:hidden">
+                <HiOutlineBars3 className="text-4xl" />
               </button>
             </div>
           </div>
