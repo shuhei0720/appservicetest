@@ -85,7 +85,7 @@ function Navigation() {
             <div>
               <Link
                 href={"#"}
-                className="btnBlue inline-flex lg:inline-block lg:inline-block max-lg:hidden"
+                className="btnBlue inline-flex lg:inline-block max-lg:hidden"
               >
                 申し込み
               </Link>
