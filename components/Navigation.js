@@ -3,6 +3,29 @@ import Link from "next/link";
 import React from "react";
 import { HiOutlineBars3 } from "react-icons/hi2";
 
+const navigationMenu = [
+  {
+    href: "#home",
+    label: "ホーム",
+  },
+  {
+    href: "#services",
+    label: "サービス",
+  },
+  {
+    href: "#solutions",
+    label: "ソリューション",
+  },
+  {
+    href: "#testimonials",
+    label: "カスタマー",
+  },
+  {
+    href: "#blog",
+    label: "ブログ・ニュース",
+  },
+];
+
 function Navigation() {
   return (
     <>
@@ -24,9 +47,11 @@ function Navigation() {
             {/* メニュー */}
             <div>
               <ul>
-                <li>
-                  <Link href={""}>ホーム、、、</Link>
-                </li>
+                {navigationMenu.map((item, index) => (
+                  <li key={index}>
+                    <Link href={item.href}>{item.label}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
             {/* ボタン */}
