@@ -17,6 +17,7 @@ module.exports = {
       yellowLight: "#f4dda5",
       purpleLight: "#dbd0e6",
       redLight: "#e597b2",
+      white: "#ffffff",
     },
   },
   plugins: [],
