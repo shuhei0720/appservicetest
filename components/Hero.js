@@ -13,8 +13,8 @@ const heroContent = {
     img1: "/assets/hero-img-1.jpg",
     img2: "/assets/hero-img-2.jpg",
     img3: "/assets/hero-img-3.jpg",
-    img4: "/assets/hero-img-4.jpg",
-    img5: "/assets/hero-img-5.jpg",
+    img5: "/assets/hero-img-4.jpg",
+    img4: "/assets/hero-img-5.jpg",
   },
 };
 
@@ -50,28 +50,30 @@ function Hero() {
           </div>
 
           {/* 右 */}
-          <div className="lg:w-6/12">
+          <div className="lg:w-6/12 space-y-2">
             {/* 上の段 */}
-            <div>
-              <div>
+            <div className="flex space-x-2 items-stretch">
+              <div className="w-8/12">
                 <Image
                   src={heroContent.images.img1}
                   width={397}
                   height={406}
                   alt="img1"
+                  className="object-cover h-full w-full rounded-2xl"
                 />
               </div>
-              <div>
-                <div>
+              <div className="w-4/12 self-end space-y-2">
+                <div className="grid grid-cols-2 gap-2">
                   <div>
                     <Image
                       src={heroContent.images.img2}
                       width={437}
                       height={437}
                       alt="img2"
+                      className="object-cover h-full w-full rounded-2xl"
                     />
                   </div>
-                  <div></div>
+                  <div className="bg-purpleLight rounded-2xl rounded-tr-[200px]" />
                 </div>
                 <div>
                   <Image
@@ -79,32 +81,34 @@ function Hero() {
                     width={374}
                     height={392}
                     alt="img3"
+                    className="object-cover h-full w-full rounded-2xl"
                   />
                 </div>
               </div>
             </div>
 
             {/* 下の段 */}
-            <div>
-              <div>
-                <div>
-                  <div>
-                    <Image
-                      src={heroContent.images.img4}
-                      width={394}
-                      height={394}
-                      alt="img4"
-                    />
-                  </div>
-                </div>
-                <div>
+            <div className="flex space-x-2">
+              <div className="w-4/12">
+                <div className="grid grid-cols-2 gap-2">
+                  <div className="bg-yellowLight rounded-2xl rounded-bl-[200px]" />
                   <Image
-                    src={heroContent.images.img5}
-                    width={446}
-                    height={495}
-                    alt="img5"
+                    src={heroContent.images.img4}
+                    width={394}
+                    height={394}
+                    alt="img4"
+                    className="object-cover h-full w-full rounded-2xl"
                   />
                 </div>
+              </div>
+              <div className="w-5/12">
+                <Image
+                  src={heroContent.images.img5}
+                  width={446}
+                  height={495}
+                  alt="img5"
+                  className="object-cover h-full w-full rounded-2xl"
+                />
               </div>
             </div>
           </div>
