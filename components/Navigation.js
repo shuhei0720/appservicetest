@@ -56,7 +56,10 @@ function Navigation() {
             </div>
             {/* ボタン */}
             <div>
-              <Link href={"#"} className="btnBlue inline-flex lg:inline-block">
+              <Link
+                href={"#"}
+                className="btnBlue inline-flex lg:inline-block lg:inline-block"
+              >
                 申し込み
               </Link>
 
