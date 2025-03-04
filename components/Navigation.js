@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { HiOutlineBars3 } from "react-icons/hi2";
+import { IoClose } from "react-icons/io5";
+import { BiChevronRight } from "react-icons/bi";
 
 const navigationMenu = [
   {
@@ -73,6 +75,30 @@ function Navigation() {
       </header>
 
       {/* モバイルメニュー */}
+      <div>
+        <div>
+          <div>
+            <div>
+              <button>
+                <IoClose />
+                <span>閉じる</span>
+              </button>
+            </div>
+            <div>
+              <ul>
+                <li>
+                  <Link href={""}>
+                    <span>ホーム</span>
+                    <span>
+                      <BiChevronRight />
+                    </span>
+                  </Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 }
