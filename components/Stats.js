@@ -10,7 +10,7 @@ const statsContent = {
       label: "現役合格率",
     },
     {
-      number: "3912",
+      number: "3,912",
       label: "生徒数",
     },
     {
@@ -27,36 +27,54 @@ const statsContent = {
 
 function Stats() {
   return (
-    <section>
-      <div>
-        <div>
+    <section className="pt-20 pb-10">
+      <div className="container px-4 mx-auto">
+        <div className="lg:flex justify-between items-center space-x-0">
           {/* 左側 */}
-          <div>
-            <div>
+          <div className="w-full lg:w-7/12 mb-20 lg:mb-0">
+            <div className="grid grid-cols-3">
               {statsContent.stats.map((item, index) => (
-                <div key={index}>
-                  <strong>{item.number}</strong>
-                  <span>{item.label}</span>
+                <div key={index} className="text-center lg:text-left">
+                  <strong
+                    className="text-green text-4xl xl:text-[52px]
+                  font-bold block leading-tight"
+                  >
+                    {item.number}
+                  </strong>
+                  <span className="text-body">{item.label}</span>
                 </div>
               ))}
             </div>
           </div>
 
           {/* 右側 */}
-          <div>
-            <div>
+          <div className="w-full lg:w-5/12">
+            <div
+              className="bg-light py-10 px-7 lg:px-10 !pr-28 md:!pr-32
+            lg:!pr-40 rounded-lg relative"
+            >
               <Image
                 src={statsContent.text.img}
                 width={100}
                 height={200}
                 alt="img"
+                className="absolute right-0 lg:-right-3 w-52 -top-3"
               />
-              <p>{statsContent.text.description}</p>
-              <h3>{statsContent.text.title}</h3>
-              <p>{statsContent.text.description}</p>
-              <Link href={""}>
+              <h3 className="text-heading font-bold text-lg mb-3">
+                {statsContent.text.title}
+              </h3>
+              <p className="text-body">{statsContent.text.description}</p>
+              <Link
+                href={""}
+                className="flex space-x-2 outline-none items-center font-semibold
+              text-green group"
+              >
                 <span>もっと見る</span>
-                <span>
+                <span
+                  className="w-6 h-6 rounded-full bg-green text-white
+                items-center justify-center inline-flex duration-300
+                transition-all ease-in-out group-hover:bg-[#006e54]"
+                >
                   <BiChevronRight />
                 </span>
               </Link>
