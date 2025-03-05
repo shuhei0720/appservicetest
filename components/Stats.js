@@ -39,7 +39,10 @@ function Stats() {
   return (
     <section className="pt-20 pb-10">
       <div className="container px-4 mx-auto">
-        <div className="lg:flex justify-between items-center space-x-0">
+        <div
+          className="lg:flex justify-between items-center space-x-0
+        max-md:overflow-hidden"
+        >
           {/* 左側 */}
           <div className="w-full lg:w-7/12 mb-20 lg:mb-0">
             <div className="grid grid-cols-3">
@@ -78,12 +81,13 @@ function Stats() {
                 width={100}
                 height={200}
                 alt="img"
-                className="absolute right-0 lg:-right-3 w-52 -top-3"
+                className="absolute right-0 lg:-right-3 w-52 -top-3
+                max-md:w-36 max-md:top-16"
               />
               <h3 className="text-heading font-bold text-lg mb-3">
                 {statsContent.text.title}
               </h3>
-              <p className="text-body">{statsContent.text.description}</p>
+              <p className="text-body mb-5">{statsContent.text.description}</p>
               <Link
                 href={""}
                 className="flex space-x-2 outline-none items-center font-semibold
