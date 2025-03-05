@@ -1,7 +1,10 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { BiChevronRight } from "react-icons/bi";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const statsContent = {
   stats: [
@@ -26,6 +29,13 @@ const statsContent = {
 };
 
 function Stats() {
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "slide",
+      once: true,
+    });
+  });
   return (
     <section className="pt-20 pb-10">
       <div className="container px-4 mx-auto">
@@ -33,17 +43,25 @@ function Stats() {
           {/* 左側 */}
           <div className="w-full lg:w-7/12 mb-20 lg:mb-0">
             <div className="grid grid-cols-3">
-              {statsContent.stats.map((item, index) => (
-                <div key={index} className="text-center lg:text-left">
-                  <strong
-                    className="text-green text-4xl xl:text-[52px]
-                  font-bold block leading-tight"
+              {statsContent.stats.map((item, index) => {
+                index *= 100;
+                return (
+                  <div
+                    key={index}
+                    className="text-center lg:text-left"
+                    data-aos="fade-up"
+                    data-aos-delay={index}
                   >
-                    {item.number}
-                  </strong>
-                  <span className="text-body">{item.label}</span>
-                </div>
-              ))}
+                    <strong
+                      className="text-green text-4xl xl:text-[52px]
+                      font-bold block leading-tight"
+                    >
+                      {item.number}
+                    </strong>
+                    <span className="text-body">{item.label}</span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -52,6 +70,8 @@ function Stats() {
             <div
               className="bg-light py-10 px-7 lg:px-10 !pr-28 md:!pr-32
             lg:!pr-40 rounded-lg relative"
+              data-aos="fade-left"
+              data-aos-delay="100"
             >
               <Image
                 src={statsContent.text.img}
