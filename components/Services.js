@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect } from "react";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const servicesContent = {
   text: {
@@ -46,11 +49,22 @@ const servicesContent = {
 };
 
 function Services() {
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "slide",
+      once: true,
+    });
+  });
   return (
     <section id="services" className="py-20 bg-light">
       <div className="container px-4 mx-auto">
         {/* 上の段 */}
-        <div className="max-w-xl mx-auto text-center mb-20">
+        <div
+          className="max-w-xl mx-auto text-center mb-20"
+          data-aos="fade-up"
+          data-aos-delay="100"
+        >
           <span
             className='inline-block py-1 pl-3 text-heading font-semibold
           relative mb-7 before:content-[" "] before:absolute before:w-2/3
@@ -75,22 +89,32 @@ function Services() {
           className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3
         gap-10"
         >
-          {servicesContent.items.map((item, index) => (
-            <div key={index} className="flex space-x-10">
-              <div className="w-14 shrink-0">
-                <span
-                  className="inline-flex items-center justify-center
+          {servicesContent.items.map((item, index) => {
+            index *= 100;
+            return (
+              <div
+                key={index}
+                className="flex space-x-10"
+                data-aos="fade-up"
+                data-aos-delay={index}
+              >
+                <div className="w-14 shrink-0">
+                  <span
+                    className="inline-flex items-center justify-center
                 p-2 w-[70px] h-[70px] rounded-lg bg-white shadow-2xl"
-                >
-                  <Image src={item.icon} width={60} height={60} alt="icon" />
-                </span>
+                  >
+                    <Image src={item.icon} width={60} height={60} alt="icon" />
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-heading font-bold mb-3">{item.title}</h3>
+                  <p className="leading-relaxed text-body">
+                    {item.description}
+                  </p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-heading font-bold mb-3">{item.title}</h3>
-                <p className="leading-relaxed text-body">{item.description}</p>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
