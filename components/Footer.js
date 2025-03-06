@@ -73,7 +73,7 @@ const footerContent = {
 
 function Footer() {
   return (
-    <footer className="py-20 bg-white">
+    <footer className="py-20 bg-white max-md:p-5">
       <div className="container px-4 mx-auto">
         <div className="block lg:flex gap-20 mb-10 pb-10 text-body">
           {/* 左 */}
@@ -121,7 +121,7 @@ function Footer() {
                           className="flex items-center duration-300 transition-all
                         ease-in-out hover:text-green group"
                         >
-                          <span>{link.label}</span>
+                          <span className="max-md:text-xs">{link.label}</span>
                           <span
                             className="left-2 relative duration-300 transition-all
                           ease-in-out opacity-0 group-hover:opacity-100 group-hover:left-3"
