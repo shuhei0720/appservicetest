@@ -1,10 +1,12 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const blogContent = {
   text: {
@@ -53,6 +55,19 @@ function Blog() {
   const [isEnd, setIsEnd] = useState(null);
   const sliderRef = useRef(null);
 
+  useEffect(() => {
+    const swiper = sliderRef.current.swiper;
+
+    const updateSlideStatus = () => {
+      setIsBeginning(swiper.isBeginning);
+      setIsEnd(swiper.isEnd);
+    };
+    swiper.on("slideChange", updateSlideStatus);
+    return () => {
+      swiper.off("slideChange", updateSlideStatus);
+    };
+  }, [sliderRef]);
+
   //前にスライド
   const prevHandler = useCallback(() => {
     if (!sliderRef.current) return;
@@ -65,49 +80,80 @@ function Blog() {
     sliderRef.current.swiper.slideNext();
   }, []);
 
+  //アニメーション
+  useEffect(() => {
+    AOS.init({
+      duration: 700,
+      easing: "slide",
+      once: true,
+    });
+  });
+
   return (
-    <section id="blog" className="py-20 bg-light overflow-x-hidden">
+    <section id="blog" className="py-20 bg-light overflow-x-hidden max-md:py-5">
       <div className="container px-4 mx-auto">
         <div className="lg:flex justify-between items-center mb-10">
           {/* 左 */}
           <div className="lg:w-5/12 mb-10 lg:mb-0">
-            <span className='inline-block py-1 pl-3 text-heading font-semibold relative mb-7 before:content-[" "] before:absolute before:w-2/3 before:bg-pinkLight before:left-0 before:top-0 before:bottom-0 before:-z-10 z-50'>
+            <span
+              className='inline-block py-1 pl-3 text-heading font-semibold relative mb-7 before:content-[" "] before:absolute before:w-2/3 before:bg-pinkLight before:left-0 before:top-0 before:bottom-0 before:-z-10 z-50'
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
               {blogContent.text.subTitle}
             </span>
-            <h2 className="text-heading text-2xl lg:text-4xl font-bold mb-5">
+            <h2
+              className="text-heading text-2xl lg:text-4xl font-bold mb-5"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
               {blogContent.text.title}
             </h2>
-            <p className="text-body leading-relaxed">
+            <p
+              className="text-body leading-relaxed"
+              data-aos="fade-up"
+              data-aos-delay="300"
+            >
               {blogContent.text.description}
             </p>
           </div>
 
           {/* 右 */}
           <div className="lg:w-5/12 text-left lg:text-right">
-            <div className="inline-flex ml-auto space-x-3">
+            <div className="inline-flex ml-auto space-x-3 max-md:hidden">
               <div
                 className={`${
-                  isBeginning == true ? "" : ""
+                  isBeginning == true
+                    ? "opacity-30 bg-gray-300 cursor-auto"
+                    : "opacity-100 hover:bg-green"
                 } group transition-all duration-300 ease-in-out w-12 h-12 cursor-pointer bg-[#E1E7EA]
             rounded-full inline-flex justify-center items-center
             `}
                 onClick={prevHandler}
               >
                 <FaChevronLeft
-                  className={`${isBeginning == true ? "" : ""}
+                  className={`${
+                    isBeginning == true
+                      ? "group-hover:text-green"
+                      : "group-hover:text-white"
+                  }
               text-3xl text-green transition-all duration-300 ease-in-out group-hover:text-white`}
                 />
               </div>
               <div
                 className={`${
-                  isEnd == true ? "" : ""
+                  isEnd == true
+                    ? "opacity-30 bg-gray-300 cursor-auto"
+                    : "opacity-100 hover:bg-green"
                 } group transition-all duration-300 ease-in-out w-12 h-12 cursor-pointer bg-[#E1E7EA]
             rounded-full inline-flex justify-center items-center`}
                 onClick={nextHandler}
               >
                 <FaChevronRight
                   className={`${
-                    isEnd == true ? "" : ""
+                    isEnd == true
+                      ? "group-hover:text-green"
+                      : "group-hover:text-white"
                   } text-3xl text-green transition-all duration-300 ease-in-out group-hover:text-white`}
                 />
               </div>
@@ -133,6 +179,8 @@ function Blog() {
           className='z-50 py-32 relative flex items-stretch !overflow-visible before:content-[" "] before:py-32
           before:z-50 before:right-full before:w-screen before:absolute before:-top-5 before:-bottom-5
           before:bg-light'
+          data-aos="fade-up"
+          data-aos-delay="300"
         >
           {blogContent.blog.map((item, index) => (
             <SwiperSlide key={index} className="overflow-visible h-full">
