@@ -73,40 +73,60 @@ const footerContent = {
 
 function Footer() {
   return (
-    <footer>
-      <div>
-        <div>
+    <footer className="py-20 bg-white">
+      <div className="container px-4 mx-auto">
+        <div className="block lg:flex gap-20 mb-10 pb-10 text-body">
           {/* 左 */}
-          <div>
+          <div className="w-full lg:w-4/12 mb-10 lg:mb-0">
             <Link href={"#"}>
               <Image
                 src={footerContent.text.logo}
                 width={90}
                 height={60}
                 alt="logo"
+                className="mb-5"
               />
             </Link>
-            <p>{footerContent.text.description}</p>
-            <Link href={"#"}>
+            <p className="leading-relaxed mb-7">
+              {footerContent.text.description}
+            </p>
+            <Link
+              href={"#"}
+              className="flex space-x-2 outline-none items-center font-semibold
+              text-green group"
+            >
               <span>もっとみる</span>
-              <span>
-                <BiChevronRight />
+              <span
+                className="w-6 h-6 rounded-full bg-green text-white inline-flex
+              items-center justify-center group-hover:bg-[#006E54] duration-300 transition-all
+              ease-in-out"
+              >
+                <BiChevronRight className="text-xl" />
               </span>
             </Link>
           </div>
           {/* 中央 */}
-          <div>
-            <div>
+          <div className="w-full lg:w-4/12 mb-10 lg:mb-0">
+            <div className="grid grid-cols-2 gap-10">
               {footerContent.footerLinks.map((footerLink, index) => (
                 <div key={index}>
-                  <h3>{footerLink.heading}</h3>
-                  <ul>
+                  <h3 className="font-semibold text-heading mb-5">
+                    {footerLink.heading}
+                  </h3>
+                  <ul className="p-0 m-0">
                     {footerLink.links.map((link, index) => (
-                      <li key={index}>
-                        <Link href={"#"}>
+                      <li key={index} className="mb-3">
+                        <Link
+                          href={"#"}
+                          className="flex items-center duration-300 transition-all
+                        ease-in-out hover:text-green group"
+                        >
                           <span>{link.label}</span>
-                          <span>
-                            <BiChevronRight />
+                          <span
+                            className="left-2 relative duration-300 transition-all
+                          ease-in-out opacity-0 group-hover:opacity-100 group-hover:left-3"
+                          >
+                            <BiChevronRight className="text-xl" />
                           </span>
                         </Link>
                       </li>
@@ -117,26 +137,32 @@ function Footer() {
             </div>
           </div>
           {/* 右 */}
-          <div>
-            <h3>{footerContent.contact.heading}</h3>
-            <p>{footerContent.contact.description}</p>
+          <div className="w-full lg:w-4/12 mb-10 lg:mb-0">
+            <h3 className="font-semibold text-heading mb-5">
+              {footerContent.contact.heading}
+            </h3>
+            <p className="leading-relaxed mb-7">
+              {footerContent.contact.description}
+            </p>
             <ul>
-              <li>
-                <FaLocationDot />
+              <li className="flex items-start space-x-3 mb-5">
+                <FaLocationDot className="text-xl text-green" />
                 <span>{footerContent.contact.address.street}</span>
               </li>
-              <li>
-                <FaPhoneAlt />
+              <li className="flex items-start space-x-3 mb-5">
+                <FaPhoneAlt className="text-xl text-green" />
                 <span>{footerContent.contact.address.phone}</span>
               </li>
-              <li>
-                <IoIosLink />
+              <li className="flex items-start space-x-3 mb-5">
+                <IoIosLink className="text-xl text-green" />
                 <span>{footerContent.contact.address.website}</span>
               </li>
             </ul>
           </div>
         </div>
-        <div>Copyright Shuhei 2025</div>
+        <div className="text-center pt-10 border-t border-gray-200">
+          Copyright Shuhei 2025
+        </div>
       </div>
     </footer>
   );
