@@ -1,7 +1,9 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useState } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 const blogContent = {
   text: {
@@ -95,6 +97,25 @@ function Blog() {
         </div>
 
         {/* スライド */}
+        <Swiper>
+          {blogContent.blog.map((item, index) => (
+            <SwiperSlide key={index}>
+              <div>
+                <Link href={item.link}>
+                  <Image
+                    src={item.img}
+                    width={782}
+                    height={467}
+                    alt="blogImage"
+                  />
+                </Link>
+                <h2>{item.title}</h2>
+                <p>{item.description}</p>
+                <span>{item.date}</span>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
         {/* ボタン */}
         <div className="mx-auto flex-col items-center justify-center w-fit">
