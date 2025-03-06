@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -51,6 +51,20 @@ const blogContent = {
 function Blog() {
   const [isBeginning, setIsBeginning] = useState(null);
   const [isEnd, setIsEnd] = useState(null);
+  const sliderRef = useRef(null);
+
+  //前にスライド
+  const prevHandler = useCallback(() => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slidePrev();
+  }, []);
+
+  //次にスライド
+  const nextHandler = useCallback(() => {
+    if (!sliderRef.current) return;
+    sliderRef.current.swiper.slideNext();
+  }, []);
+
   return (
     <section id="blog" className="py-20 bg-light overflow-x-hidden">
       <div className="container px-4 mx-auto">
@@ -77,6 +91,7 @@ function Blog() {
                 } group transition-all duration-300 ease-in-out w-12 h-12 cursor-pointer bg-[#E1E7EA]
             rounded-full inline-flex justify-center items-center
             `}
+                onClick={prevHandler}
               >
                 <FaChevronLeft
                   className={`${isBeginning == true ? "" : ""}
@@ -88,6 +103,7 @@ function Blog() {
                   isEnd == true ? "" : ""
                 } group transition-all duration-300 ease-in-out w-12 h-12 cursor-pointer bg-[#E1E7EA]
             rounded-full inline-flex justify-center items-center`}
+                onClick={nextHandler}
               >
                 <FaChevronRight
                   className={`${
@@ -112,6 +128,8 @@ function Blog() {
               slidesPerView: 2,
             },
           }}
+          ref={sliderRef}
+          speed={700}
           className='z-50 py-32 relative flex items-stretch !overflow-visible before:content-[" "] before:py-32
           before:z-50 before:right-full before:w-screen before:absolute before:-top-5 before:-bottom-5
           before:bg-light'
