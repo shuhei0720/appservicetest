@@ -81,7 +81,7 @@ function Solutions() {
                     <div className="ml-auto">
                       <div
                         className="bg-yellowLight w-10 h-10 lg:w-24 lg:h-24 rounded-2xl rounded-bl-[200px]
-                      max-md:w-16 max-md:h-16 "
+                      max-md:w-16 max-md:h-16"
                       />
                     </div>
                   </div>
